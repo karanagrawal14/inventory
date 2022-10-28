@@ -13,24 +13,24 @@ const refSchema = new Schema({
         type:String,
         required:true
     },
+    label:{
+        type:String,
+        default:''
+    },
     price:{
         type:Currency,
         required:true,
         min:0
     },
-    featured:{
-        type:Boolean,
-        default:false
-    },
-    quantity:{
-        type:Number,
-        required:true
-    },
     description:
     {
         type:String,
         default:''
-    }
+    },
+    featured: {
+        type: Boolean,
+        default:false      
+    },
 
 
 

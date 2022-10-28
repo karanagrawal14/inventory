@@ -10,6 +10,10 @@ var passport = require('passport');
 var config = require('./config');
 
 const url = config.mongoUrl;
+// const connectionParams={
+//   useNewUrlParser:true,
+//   useUnifiedTopology:true
+// }
 const connect = mongoose.connect(url);
 connect.then((db)=>{
   console.log("Connected correctly to server");

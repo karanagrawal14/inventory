@@ -2,13 +2,15 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const authenticate = require('../authenticate');
 const Stationaries = require('../models/stationaries');
+const cors = require('./cors');
 
 const stationaryRouter = express.Router();
 
 stationaryRouter.use(bodyParser.json());
 
 stationaryRouter.route('/')
-.get((req,res,next)=>{
+.options(cors.corsWithOptions,(req,res)=>{res.sendStatus(200);})
+.get(cors.cors,(req,res,next)=>{
     Stationaries.find({})
     .then((electro)=>{
         res.statusCode = 200;
@@ -44,8 +46,8 @@ stationaryRouter.route('/')
 });
 
 stationaryRouter.route('/:stationId')
-
-.get((req,res,next)=>{
+.options(cors.corsWithOptions,(req,res)=>{res.sendStatus(200);})
+.get(cors.cors,(req,res,next)=>{
     Stationaries.findById(req.params.stationId)
     .then((elecro)=>{
         res.statusCode = 200;

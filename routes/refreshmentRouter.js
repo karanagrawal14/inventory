@@ -2,13 +2,15 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const authenticate = require('../authenticate');
 const Refreshments = require('../models/refreshments');
+const cors = require('./cors');
 
 const refreshmentRouter = express.Router();
 
 refreshmentRouter.use(bodyParser.json());
 
 refreshmentRouter.route('/')
-.get((req,res,next)=>{
+.options(cors.corsWithOptions,(req,res)=>{res.sendStatus(200);})
+.get(cors.cors,(req,res,next)=>{
     Refreshments.find({})
     .then((electro)=>{
         res.statusCode = 200;
@@ -44,8 +46,8 @@ refreshmentRouter.route('/')
 });
 
 refreshmentRouter.route('/:refId')
-
-.get((req,res,next)=>{
+.options(cors.corsWithOptions,(req,res)=>{res.sendStatus(200);})
+.get(cors.cors,(req,res,next)=>{
     Refreshments.findById(req.params.refId)
     .then((elecro)=>{
         res.statusCode = 200;
