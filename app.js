@@ -27,7 +27,9 @@ var usersRouter = require('./routes/users');
 var electronicRouter = require('./routes/electronicRouter');
 var stationaryRouter = require('./routes/stationaryRouter');
 var refreshmentRouter = require('./routes/refreshmentRouter');
-
+var inventoryRouter = require('./routes/inventoryRouter');
+var salesRouter = require('./routes/salesRouter');
+var orderRouter = require('./routes/orderRouter');
 var app = express();
 
 // view engine setup
@@ -47,6 +49,9 @@ app.use('/users', usersRouter);
 app.use('/electronics',electronicRouter);
 app.use('/stationaries',stationaryRouter);
 app.use('/refreshments',refreshmentRouter);
+app.use('/Inventory',inventoryRouter);
+app.use('/Sales',salesRouter);
+app.use('/Orders',orderRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
