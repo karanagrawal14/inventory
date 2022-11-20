@@ -8,6 +8,7 @@ var mongoose = require('mongoose');
 // var FileStore = require('session-file-store')(session);
 var passport = require('passport');
 var config = require('./config');
+// var ejs = require('ejs')
 
 const url = config.mongoUrl;
 // const connectionParams={
@@ -32,9 +33,11 @@ var salesRouter = require('./routes/salesRouter');
 var orderRouter = require('./routes/orderRouter');
 var app = express();
 
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+// app.set('view engine', 'jade');
+app.set('view engine', 'ejs');
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -46,9 +49,9 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/electronics',electronicRouter);
-app.use('/stationaries',stationaryRouter);
-app.use('/refreshments',refreshmentRouter);
+// app.use('/electronics',electronicRouter);
+// app.use('/stationaries',stationaryRouter);
+// app.use('/refreshments',refreshmentRouter);
 app.use('/Inventory',inventoryRouter);
 app.use('/Sales',salesRouter);
 app.use('/Orders',orderRouter);

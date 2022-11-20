@@ -5,10 +5,13 @@ const Stock = require('../models/stocks');
 const Aging = require('../models/AgingStock');
 const Invent = require('../models/InventoryCost');
 const cors = require('./cors');
+// const ejs = require('ejs');
+
 
 const inventoryRouter = express.Router();
 
 inventoryRouter.use(bodyParser.json());
+// inventoryRouter.set('view engine', 'ejs');
 inventoryRouter.route('/Stock')
 .options(cors.corsWithOptions,(req,res)=>{res.sendStatus(200);})
 .get(cors.cors,(req,res,next)=>{
@@ -16,7 +19,8 @@ inventoryRouter.route('/Stock')
     .then((electro)=>{
         res.statusCode = 200;
         res.setHeader('Content-Type','application/json');
-        res.json(electro);
+        // res.json(electro);
+        res.render("home.ejs");
     },err=>next(err))
     .catch(err=>next(err))
     

@@ -35,7 +35,7 @@ const SalesSchema = new Schema({
         type:String,
         required:true
     },
-    Bill_to_Party:{
+    Ship_to_Party:{
         type:String,
         required:true
     },
@@ -51,11 +51,11 @@ const SalesSchema = new Schema({
         type:Number,
         required:true
     },
-    TotalPrice:{
+    Total_Price:{
         type:Currency,
         required:true
     },
-    TotalPriceExcludingGst:{
+    Total_Price_Excluding_Gst:{
         type:Currency,
         required:true
     }
